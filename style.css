@@ -183,7 +183,7 @@ button:hover {
     #gridSizeSlider {
         width: 120px; /* Increase width for better control */
         height: 15px; /* Make it thicker */
-        border-radius: 25px;
+        border-radius: 20px;
 
     }
 
