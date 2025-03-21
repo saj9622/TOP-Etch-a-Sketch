@@ -1,3 +1,4 @@
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@
     background-color: #212121;
 }
 
+/* Body */
 body {
     display: flex;
     flex-direction: column;
@@ -13,6 +15,7 @@ body {
     height: 100vh;
 }
 
+/* Header */
 h1 {
     text-align: center;
     color: #AFAFAF;
@@ -24,6 +27,7 @@ h1 {
     border-bottom: 1px solid #2C2C2C;
 }
 
+/* Grid Container */
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -34,6 +38,7 @@ h1 {
     border-radius: 5px;
 }
 
+/* Grid Squares */
 .square {
     flex: 1 0 calc(100% / var(--grid-size));
     aspect-ratio: 1 / 1;
@@ -46,11 +51,11 @@ h1 {
     background-color: var(--hover-color, #AFAFAF); /* Uses JS-controlled color */
 }
 
-/* TOOLBAR */
+/* Toolbar */
 .div__tools {
     display: flex;
-    align-items: center; /* Aligns all buttons and slider */
-    gap: 10px; /* Adds space between buttons */
+    align-items: center;
+    gap: 10px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #303030;
     padding: 20px;
@@ -74,43 +79,27 @@ button:hover {
     background-color: #424242;
 }
 
-/* BG Color Picker Button */
-.btn-bgcolor {
-    display: inline-flex; /* Aligns with other buttons */
-    justify-content: center;
-    align-items: center;
-    width: 40px; /* Match button height */
-    height: 40px;
-    border-radius: 50%;
-    background-color: transparent;
-    border: 1px solid #454545;
-    cursor: pointer;
-    vertical-align: middle; /* Ensures alignment */
-}
-
-.btn-bgcolor:hover {
-    background-color: #424242;
-}
-
-/* Color Picker Button */
+/* Background & Color Picker Buttons */
+.btn-bgcolor,
 .btn-color {
-    display: inline-flex; /* Aligns with other buttons */
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 40px; /* Match button height */
+    width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: transparent;
     border: 1px solid #454545;
     cursor: pointer;
-    vertical-align: middle; /* Ensures alignment */
+    vertical-align: middle;
 }
 
+.btn-bgcolor:hover,
 .btn-color:hover {
     background-color: #424242;
 }
 
-/* Hide the default color input */
+/* Hide Default Color Input */
 #colorPicker {
     display: none;
 }
@@ -127,7 +116,7 @@ button:hover {
     -webkit-appearance: none;
     appearance: none;
     outline: none;
-    width: 50px; /* Increased width for better control */
+    width: 50px;
     height: 10px;
     border: 1px solid #3A3A3A;
     background-color: #171717;
@@ -144,22 +133,23 @@ button:hover {
     background-color: #AFAFAF;
 }
 
+/* Copyright Text */
 .copyright {
     color: #AFAFAF;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12.5px;
     text-align: center;
     padding: 7.5px;
-    gap: 10px;
     letter-spacing: 2.5px;
 }
 
-/* Active mode button styling */
+/* Active Mode Button Styling */
 .active-mode {
     background-color: #2A4A6D !important;
     color: #47A7FA !important;
 }
 
+/* Hide Grid Borders */
 .no-border {
     border: none;
 }
