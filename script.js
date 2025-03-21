@@ -46,7 +46,18 @@ function rand(max) {
     return Math.floor(Math.random() * max);
 }
 
-// Drawing event listeners
+// Apply color based on selected mode
+function applyColor(square) {
+    if (currentMode === "color") {
+        square.style.backgroundColor = selectedColor;
+    } else if (currentMode === "rgb") {
+        square.style.backgroundColor = getRandomColor();
+    } else if (currentMode === "eraser") {
+        square.style.backgroundColor = selectedBgColor; // Restore selected background color
+    }
+}
+
+// **Mouse Events (For Desktop)**
 container.addEventListener("mousedown", (e) => {
     if (!e.target.classList.contains("square")) return;
     isDrawing = true;
@@ -64,16 +75,27 @@ document.addEventListener("mouseup", () => {
     isDrawing = false;
 });
 
-// Apply color based on selected mode
-function applyColor(square) {
-    if (currentMode === "color") {
-        square.style.backgroundColor = selectedColor;
-    } else if (currentMode === "rgb") {
-        square.style.backgroundColor = getRandomColor();
-    } else if (currentMode === "eraser") {
-        square.style.backgroundColor = selectedBgColor; // Restore selected background color
+// **Touch Events (For Mobile)**
+container.addEventListener("touchstart", (e) => {
+    if (!e.target.classList.contains("square")) return;
+    isDrawing = true;
+    applyColor(e.target);
+    e.preventDefault();
+});
+
+container.addEventListener("touchmove", (e) => {
+    if (!isDrawing) return;
+    const touch = e.touches[0];
+    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (element && element.classList.contains("square")) {
+        applyColor(element);
     }
-}
+    e.preventDefault();
+});
+
+document.addEventListener("touchend", () => {
+    isDrawing = false;
+});
 
 // Color Picker Button
 btnColor.addEventListener("click", () => colorPicker.click());
@@ -127,3 +149,20 @@ slider.addEventListener("input", () => {
     label.textContent = `${newSize} x ${newSize}`;
     createGrid(newSize);
 });
+
+// **Auto-adjust grid size for small screens**
+function adjustGridSizeForMobile() {
+    if (window.innerWidth < 600) {
+        slider.max = "32"; // Reduce max grid size for performance
+        if (slider.value > 32) {
+            slider.value = "32";
+            createGrid(32);
+        }
+    } else {
+        slider.max = "64";
+    }
+}
+
+// Adjust grid size on page load and window resize
+window.addEventListener("load", adjustGridSizeForMobile);
+window.addEventListener("resize", adjustGridSizeForMobile);

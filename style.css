@@ -153,3 +153,29 @@ button:hover {
 .no-border {
     border: none;
 }
+
+
+/* Mobile Support */
+@media (max-width: 600px) {
+    .container {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    .div__tools {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        padding: 15px;
+    }
+
+    button, #gridSizeLabel, #gridSizeSlider {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .btn-bgcolor, .btn-color {
+        width: 35px;
+        height: 35px;
+    }
+}
